@@ -1,98 +1,105 @@
-import React, { useState } from "react";
+import React,{  useState  } from "react";
 
-function App() {
-  const [newHabit, setNewHabit] = useState("");
-
-  const [habits, setHabits] = useState([
+function App(){
+  const [newHabit, setNewHabit]=useState("")
+  const [habits, setHabits]=useState([
     {
-      name: "Coding",
-      completed: false,
+       name: "coding",
+        completed:false,
+
     },
     {
-      name: "Exercise",
-      completed: false,
-    },
+       name: "",
+       completed:true,
+    }
   ]);
+  
+  
+  
 
-  function handleChange(event) {
-    const value = event.target.value;
+
+  function handleChange(event){
+    const value=event.target.value;
     setNewHabit(value);
+
   }
 
-  function handleAddHabit(event) {
+  function handleAddHabit(event){
     event.preventDefault();
+    setHabits((pervHabits)=>{
 
-    setHabits((prevHabits) => {
-      return [
-        ...prevHabits,
+      return[...pervHabits, 
         {
           name: newHabit,
-          completed: false,
-        },
-      ];
-    });
-
-    setNewHabit("");
-  }
-
-  function handleToggleHabit(index) {
-    setHabits((prevHabits) => {
-      return prevHabits.map((habit, habitIndex) => {
-        if (habitIndex === index) {
-          return {
-            ...habit,
-            completed: !habit.completed,
-          };
+          completed:false
         }
+      ]
+    })
+    setNewHabit("")
 
-        return habit;
-      });
-    });
+
   }
 
-  function handleDeleteHabit(index) {
-    setHabits((prevHabits) => {
-      return prevHabits.filter(
-        (_, habitIndex) => habitIndex !== index
-      );
-    });
+  function handleToggleHabit(index){
+      setHabits((pervHabits)=>{
+        return pervHabits.map((habit, habiIndex)=>{
+          if(habiIndex === index){
+            return{
+              ...habit, 
+              completed: !habit.completed,
+            }
+          }
+          return habit;
+
+        })
+      })
   }
 
-  return (
+  function handleDeleteHabit(index){
+    setHabits(pervHabits=>{
+      return pervHabits.filter((_ , habitIndex)=>{
+        return habitIndex !== index;
+      })
+    })
+  }
+
+
+
+
+
+
+  return(
     <>
-      <form onSubmit={handleAddHabit}>
-        <h1>Habit Tracker</h1>
+    <form onSubmit={handleAddHabit}>
+          <h1>Habit Tracker</h1>
+          <input onChange={handleChange} value={newHabit} type ="text" placeholder="Add a new habit" />
+          <button  type="submit">Add habit</button>
 
-        <input
-          onChange={handleChange}
-          value={newHabit}
-          type="text"
-          placeholder="Enter a new habit..."
-        />
 
-        <button type="submit">Add habit</button>
-      </form>
 
-      {habits.map((habit, index) => {
+
+    </form>
+
+    
+      {habits.map((habit, index)=>{
         return (
-          <p key={index}>
-            <input
-              type="checkbox"
-              checked={habit.completed}
-              onChange={() => handleToggleHabit(index)}
-            />
-
-            {habit.name}
-
-            <button onClick={() => handleDeleteHabit(index)}>
+          <p 
+          key={index}>
+            <input type="checkbox"  
+            checked={habit.completed}
+             onChange={()=>{handleToggleHabit(index)}} /> 
+             {habit.name}    
+             <button onClick={() => handleDeleteHabit(index)}>
               Delete
-            </button>
-          </p>
-        );
-      })}
-    </>
-  );
+            </button> </p>
+        )
+      })
+    }
+    
+</>
+  )
 }
 
-export default App;
 
+
+export default App;
