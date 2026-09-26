@@ -62,7 +62,27 @@ function App(){
       })
     })
   }
+function handleEditHabit(index) {
+  const newName = window.prompt(
+    "Enter new habit name:",
+    habits[index].name
+  );
 
+  if (!newName || newName.trim() === "") {
+    return;
+  }
+
+  setHabits((prevHabits) => {
+    const updatedHabits = [...prevHabits];
+
+    updatedHabits[index] = {
+      ...updatedHabits[index],
+      name: newName,
+    };
+
+    return updatedHabits;
+  });
+}
 
 
 
@@ -89,9 +109,17 @@ function App(){
             checked={habit.completed}
              onChange={()=>{handleToggleHabit(index)}} /> 
              {habit.name}    
+          
+            <button
+              type="button"
+               onClick={() => handleEditHabit(index)}>
+                 Edit
+               </button>
              <button onClick={() => handleDeleteHabit(index)}>
               Delete
-            </button> </p>
+            </button> 
+             </p>
+            
         )
       })
     }
