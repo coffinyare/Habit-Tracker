@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+#root {
+  width: 100%;
+  max-width: 600px;
+}
+
+form {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  margin-bottom: 25px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 32px;
+}
+
+form input[type="text"] {
+  width: 70%;
+  padding: 13px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+form input[type="text"]:focus {
+  border-color: #555;
+}
+
+form button {
+  width: 27%;
+  margin-left: 3%;
+  padding: 13px 10px;
+  border: none;
+  border-radius: 8px;
+  background: #222;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #444;
+}
+
+p {
+  background: white;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 17px;
+}
+
+p input[type="checkbox"] {
+  width: 19px;
+  height: 19px;
+  cursor: pointer;
+}
+
+p button {
+  margin-left: auto;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 7px;
+  background: #e74c3c;
+  color: white;
+  cursor: pointer;
+}
+
+p button:hover {
+  background: #c0392b;
+}
+
+@media (max-width: 500px) {
+  body {
+    padding: 25px 15px;
+  }
+
+  form {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 27px;
+  }
+
+  form input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  form button {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
